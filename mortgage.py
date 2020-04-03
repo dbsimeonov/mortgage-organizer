@@ -1,7 +1,7 @@
 import json
 from prettytable import PrettyTable
 
-from helpers import calc_mortgage
+from helpers import calc_mortgage, print_mortgage_deal
 
 
 with open('data.json') as json_file:
@@ -15,13 +15,7 @@ years = 25
 monthly_payment = calc_mortgage(principal, interest, years)
 total_amount = monthly_payment * years * 12
 
-sf = '''\
-For a {} year mortgage loan of ${:,}
-at an annual interest rate of {:.2f}%
-you pay ${:.2f} monthly'''
-print(sf.format(years, principal, interest, monthly_payment))
-print('-'*58)
-print("Total amount paid will be ${:,.2f}".format(total_amount))
+print_mortgage_deal(years, principal, interest, monthly_payment, total_amount)
 
 calc_row = {
     'id': uuid,
@@ -45,15 +39,15 @@ write_json(data)
 with open('data.json') as json_file:
     json_data_updated = json.load(json_file)
 
-table = PrettyTable(['Id', 'Years', 'Loan', 'Interest', 'Monthly', 'Total Amount'])
+table = PrettyTable(['ID', 'Y', 'I %', 'Loan', 'MPM', 'Total Amount'])
 for obj in json_data_updated['data']:
    table.add_row([
       obj.get('id'),
       obj.get('years'),
-      obj.get('loan'),
       obj.get('interest'),
-      obj.get('monthly'),
-      obj.get('total_amount')
+      '${:,}'.format(obj.get('loan')),
+      '${:,}'.format(obj.get('monthly')),
+      '${:,}'.format(obj.get('total_amount')),
    ])
 
 print(table)
