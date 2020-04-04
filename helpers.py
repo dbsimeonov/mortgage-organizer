@@ -23,3 +23,6 @@ you pay ${:.2f} monthly'''
     print(sf.format(years, principal, interest, monthly_payment))
     print('-'*58)
     print("Total amount paid will be ${:,.2f}".format(total_amount))
+
+# from operator import itemgetter
+# sorted_list = sorted(d, key=itemgetter('total_amount')

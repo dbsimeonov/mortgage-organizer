@@ -9,9 +9,9 @@ with open('data.json') as json_file:
 
 uuid = max([obj.get('id') for obj in data['data']]) + 1
 
-principal = int(90000 / 1.3)
-interest = 3.7
-years = 30
+principal = int(int(input('Principal of mortgage:  ')) / 1.3)
+interest = float(input('Interest rate:  ')) # 3.7
+years = int(input('Years:  '))  # 25
 monthly_payment = calc_mortgage(principal, interest, years)
 total_amount = monthly_payment * years * 12
 
