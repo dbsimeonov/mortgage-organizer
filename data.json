@@ -1,20 +1,13 @@
 {
     "data": [
         {
-            "total_amount": 95221,
-            "monthly": 317,
-            "loan": 57692,
+            "id": 7,
             "years": 25,
-            "interest": 4.4,
-            "id": 1
-        },
-        {
-            "total_amount": 89455,
-            "monthly": 298,
-            "loan": 57692,
-            "years": 25,
-            "interest": 3.8,
-            "id": 2
+            "deposit": 30000,
+            "loan": 70000,
+            "interest": 4.1,
+            "monthly": 373,
+            "total_amount": 112008
         }
     ]
 }

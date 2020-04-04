@@ -19,9 +19,9 @@ def print_mortgage_deal(years, principal, interest, monthly_payment, total_amoun
 For a {} year mortgage loan of ${:,}
 at an annual interest rate of {:.2f}%
 you pay ${:.2f} monthly'''
-    print('-'*58)
+    print('-'*55)
     print(sf.format(years, principal, interest, monthly_payment))
-    print('-'*58)
+    print('-'*55)
     print("Total amount paid will be ${:,.2f}".format(total_amount))
 
 # from operator import itemgetter

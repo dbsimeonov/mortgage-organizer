@@ -7,9 +7,14 @@ from helpers import calc_mortgage, print_mortgage_deal
 with open('data.json') as json_file:
     data = json.load(json_file)
 
-uuid = max([obj.get('id') for obj in data['data']]) + 1
+if len(data['data']):
+    uuid = max([obj.get('id') for obj in data['data']]) + 1
+else:
+    uuid = 1
 
-principal = int(int(input('Principal of mortgage:  ')) / 1.3)
+principal = int(input('Principal of mortgage:  '))
+deposit = int(principal * 0.3)
+principal = int(principal * (1-0.3))
 interest = float(input('Interest rate:  ')) # 3.7
 years = int(input('Years:  '))  # 25
 monthly_payment = calc_mortgage(principal, interest, years)
@@ -20,6 +25,7 @@ print_mortgage_deal(years, principal, interest, monthly_payment, total_amount)
 calc_row = {
     'id': uuid,
     'years': years,
+    'deposit': deposit,
     'loan': principal,
     'interest': interest,
     'monthly': int(monthly_payment),
@@ -39,15 +45,16 @@ write_json(data)
 with open('data.json') as json_file:
     json_data_updated = json.load(json_file)
 
-table = PrettyTable(['ID', 'Y', 'Int', 'Loan', 'MPM', 'Total'])
+table = PrettyTable(['ID', 'Y', 'IR', 'Dep', 'Loan', 'MPM', 'Total'])
 for obj in json_data_updated['data']:
    table.add_row([
-      obj.get('id'),
-      obj.get('years'),
-      obj.get('interest'),
-      '£{:,}'.format(obj.get('loan')),
-      '£{:,}'.format(obj.get('monthly')),
-      '£{:,}'.format(obj.get('total_amount')),
+      obj.get('id') or '<null>',
+      obj.get('years') or '<null>',
+      obj.get('interest') or '<null>',
+      '£{:,}'.format(obj.get('deposit')) or '<null>',
+      '£{:,}'.format(obj.get('loan')) or '<null>',
+      '£{:,}'.format(obj.get('monthly')) or '<null>',
+      '£{:,}'.format(obj.get('total_amount')) or '<null>',
    ])
 
 print(table)
