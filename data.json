@@ -8,6 +8,24 @@
             "interest": 4.1,
             "monthly": 373,
             "total_amount": 112008
+        },
+        {
+            "id": 8,
+            "years": 25,
+            "deposit": 24000,
+            "loan": 56000,
+            "interest": 3.7,
+            "monthly": 286,
+            "total_amount": 85917
+        },
+        {
+            "id": 9,
+            "years": 25,
+            "deposit": 24000,
+            "loan": 56000,
+            "interest": 4.4,
+            "monthly": 308,
+            "total_amount": 92428
         }
     ]
 }

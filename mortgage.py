@@ -1,8 +1,7 @@
 import json
-from prettytable import PrettyTable
 
 from helpers import calc_mortgage, print_mortgage_deal
-
+from tables import display_table
 
 with open('data.json') as json_file:
     data = json.load(json_file)
@@ -45,16 +44,4 @@ write_json(data)
 with open('data.json') as json_file:
     json_data_updated = json.load(json_file)
 
-table = PrettyTable(['ID', 'Y', 'IR', 'Dep', 'Loan', 'MPM', 'Total'])
-for obj in json_data_updated['data']:
-   table.add_row([
-      obj.get('id') or '<null>',
-      obj.get('years') or '<null>',
-      obj.get('interest') or '<null>',
-      '£{:,}'.format(obj.get('deposit')) or '<null>',
-      '£{:,}'.format(obj.get('loan')) or '<null>',
-      '£{:,}'.format(obj.get('monthly')) or '<null>',
-      '£{:,}'.format(obj.get('total_amount')) or '<null>',
-   ])
-
-print(table)
+display_table(json_data_updated['data'])
